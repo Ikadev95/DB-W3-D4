@@ -13,8 +13,18 @@ public class GaraDiAtletica extends Evento {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @ManyToMany
+    @JoinTable(
+            name = "gara_atleti",
+            joinColumns = @JoinColumn(name = "gara_id"),
+            inverseJoinColumns = @JoinColumn(name = "atleta_id")
+    )
+    @Column(name = "atleti")
     private Set<Persona> atleti;
 
+    @ManyToOne
+    @JoinColumn(name = "vincitore_id")
+    @Column(name = "vincitore")
     private Persona vincitore;
 
 }

@@ -1,5 +1,7 @@
 package it.epicode.dao;
 
+import it.epicode.GenereConcertoEnum;
+import it.epicode.entity.Concerto;
 import it.epicode.entity.PartitaDiCalcio;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
@@ -35,6 +37,16 @@ public class PartitaDiCalcioDAO {
         em.getTransaction().begin();
         em.remove(oggetto);
         em.getTransaction().commit();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInCasa(){
+        return em.createNamedQuery("Trova_partite_vinte_in_casa", PartitaDiCalcio.class)
+                .getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInTrasferta(){
+        return em.createNamedQuery("Trova_partite_vinte_in_trasferta", PartitaDiCalcio.class)
+                .getResultList();
     }
 
 

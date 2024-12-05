@@ -3,6 +3,8 @@ package it.epicode.entity;
 import it.epicode.GenereConcertoEnum;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Entity
@@ -14,9 +16,16 @@ public class Concerto extends Evento{
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-
+    @Getter
+    @Setter
+    @Enumerated(EnumType.STRING)
+    @Column(name = "genere", nullable = false)
     private GenereConcertoEnum genere;
 
+
+    @Getter
+    @Setter
+    @Column(name = "in_streaming", nullable = false)
     private boolean inStreaming;
 
 }
