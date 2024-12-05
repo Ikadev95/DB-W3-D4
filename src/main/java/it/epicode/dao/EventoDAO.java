@@ -1,5 +1,7 @@
 package it.epicode.dao;
 
+import it.epicode.GenereConcertoEnum;
+import it.epicode.entity.Concerto;
 import it.epicode.entity.Evento;
 import jakarta.persistence.EntityManager;
 
@@ -33,6 +35,18 @@ public class EventoDAO {
             em.persist(e);
         }
         em.getTransaction().commit();
+    }
+
+    public List<Concerto> getConcertiInStreaming(boolean inStreaming){
+        return em.createNamedQuery("Trova_concerti_in_streaming", Concerto.class)
+                .setParameter("inStreaming", inStreaming)
+                .getResultList();
+    }
+
+    public List<Concerto> getConcertiPerGenere(GenereConcertoEnum genere){
+        return em.createNamedQuery("Trova_concerti_per_genere", Concerto.class)
+                .setParameter("genere",genere)
+                .getResultList();
     }
 
 }

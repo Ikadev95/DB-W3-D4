@@ -15,6 +15,10 @@ import java.util.List;
 @Entity
 @Table(name = "eventi")
 @Data
+
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedQuery(name="Trova_tutti_Eventi", query="SELECT e FROM Evento e")
+
 public class Evento {
     @Id
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
