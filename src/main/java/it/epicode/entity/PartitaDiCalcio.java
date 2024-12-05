@@ -8,6 +8,11 @@ import lombok.Setter;
 @Data
 @Entity
 @NamedQuery(name = "Trova_tutte_PartiteDiCalcio", query = "SELECT e FROM PartitaDiCalcio e")
+@NamedQuery(name = "PartiteVinteInCasa",
+        query = "SELECT p FROM PartitaDiCalcio p WHERE p.vincente = p.squadraDiCasa")
+@NamedQuery(name = "PartiteVinteInTrasferta",
+        query = "SELECT p FROM PartitaDiCalcio p WHERE p.vincente = p.squadraOspite")
+
 public class PartitaDiCalcio extends Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

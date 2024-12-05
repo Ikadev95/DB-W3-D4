@@ -3,6 +3,7 @@ package it.epicode.dao;
 import it.epicode.GenereConcertoEnum;
 import it.epicode.entity.Concerto;
 import it.epicode.entity.Evento;
+import it.epicode.entity.PartitaDiCalcio;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
@@ -46,6 +47,16 @@ public class EventoDAO {
     public List<Concerto> getConcertiPerGenere(GenereConcertoEnum genere){
         return em.createNamedQuery("Trova_concerti_per_genere", Concerto.class)
                 .setParameter("genere",genere)
+                .getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVintelnCasa() {
+        return em.createNamedQuery("PartiteVinteInCasa", PartitaDiCalcio.class)
+                .getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVintelnTrasferta() {
+        return em.createNamedQuery("PartiteVinteInTrasferta", PartitaDiCalcio.class)
                 .getResultList();
     }
 
